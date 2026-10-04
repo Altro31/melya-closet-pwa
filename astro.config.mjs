@@ -12,9 +12,10 @@ export default defineConfig({
     varlockAstroIntegration(),
     react({ compiler: true }),
     VitePWA({
-      injectRegister: 'inline',
-      strategies: 'generateSW',
-      
+      strategies: 'injectManifest',
+      registerType: 'autoUpdate',
+      srcDir: 'src',
+      filename: 'sw.ts',
       manifest: {
         name: 'Melya Closet',
         short_name: 'MelyaCloset',
@@ -35,6 +36,9 @@ export default defineConfig({
             type: 'image/png',
           },
         ],
+      },
+      experimental: {
+        directoryAndTrailingSlashHandler: true,
       },
     }),
   ],
